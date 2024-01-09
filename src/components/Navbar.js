@@ -12,10 +12,10 @@ export function Navbar() {
   return (
     <header className="flex items-center bg-gray-800 px-28 py-3">
       <Link href="/">
-        <h1 className="font-black text-3xl text-white">Task App</h1>
+        <h1 className="font-black text-3xl text-white">Applikasi Tugas</h1>
       </Link>
 
-      <span className="ml-2 text-gray-400 font-bold">{tasks.length} tasks</span>
+      <span className="ml-4 text-gray-400 font-bold">{tasks.length} tugas</span>
 
       <div className="flex-grow text-right">
         <button
@@ -23,7 +23,7 @@ export function Navbar() {
           onClick={() => router.push("/new")}
         >
           <AiOutlinePlus className="mr-2" />
-          Add Task
+          Tambahkan
         </button>
       </div>
     </header>

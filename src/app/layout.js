@@ -5,7 +5,7 @@ import { TasksProvider } from "../context/TasksContext";
 import { Toaster } from "./Toaster";
 
 export const metadata = {
-  title: "Tasks App",
+  title: "Applikasi Tugas",
 };
 
 export default function RootLayout({ children }) {

@@ -44,11 +44,14 @@ const TaskFormPage = ({ params }) => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-full">
-      <form className="bg-gray-700 p-10" onSubmit={onSubmit}>
+    <div className="flex justify-center items-center">
+      <form className="bg-gray-700 p-5 w-[70%]" onSubmit={onSubmit}>
         <h1 className="text-3xl mb-3">
           {params.id ? "Edit Task" : "New Task"}
         </h1>
+        <label htmlFor="author" className="block text-gray-400 text-sm font-bold mb-2">
+            Judul
+          </label>
         <input
           type="text"
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
@@ -59,10 +62,12 @@ const TaskFormPage = ({ params }) => {
         />
         {errors.title && (
           <span className="block text-red-400 mb-2">
-            This field is required
+            Bagian ini harus diisi
           </span>
         )}
-
+          <label htmlFor="author" className="block text-gray-400 text-sm font-bold mb-2">
+            Deskripsi
+          </label>
         <textarea
           cols="2"
           placeholder="Write a Description"
@@ -72,7 +77,7 @@ const TaskFormPage = ({ params }) => {
         />
         {errors.description && (
           <span className="block text-red-400 mb-2">
-            This field is required
+            Bagian ini harus diisi
           </span>
         )}
 
@@ -107,13 +112,13 @@ const TaskFormPage = ({ params }) => {
           />
           {errors.author && (
             <span className="block text-red-400 mb-2">
-              This field is required
+              Bagian ini harus diisi
             </span>
           )}
         </div>
 
         <button className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-sm disabled:opacity-30">
-          Save
+          Simpan
         </button>
       </form>
     </div>

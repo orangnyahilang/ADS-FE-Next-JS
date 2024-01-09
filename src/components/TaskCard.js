@@ -7,6 +7,8 @@ import { VscEdit } from "react-icons/vsc";
 import { toast } from "react-hot-toast";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPen, faClock } from '@fortawesome/free-solid-svg-icons';
 
 
 export const TaskCard = ({ task }) => {
@@ -27,8 +29,8 @@ export const TaskCard = ({ task }) => {
             {/* Tombol Delete dipindahkan ke samping */}
           </div>
           <p className="text-gray-300 mb-2">{task.description}</p>
-          <span className="text-gray-400 text-xs block mb-1">Author: {task.author}</span>
-          <span className="text-gray-400 text-xs block mb-1">Deadline: {formatDeadline(task.deadline)}</span>
+          <span className="text-gray-400 text-xs block mb-1"><FontAwesomeIcon icon={faUserPen} /> Penulis: {task.author}</span>
+          <span className="text-gray-400 text-xs block mb-1"><FontAwesomeIcon icon={faClock} /> Deadline: {formatDeadline(task.deadline)}</span>
         </div>
         <div className="flex items-center">
           <button
@@ -42,13 +44,13 @@ export const TaskCard = ({ task }) => {
               toast.success("Task deleted successfully");
             }}
           >
-            <VscTrash className="mr-2" /> Delete
+            <VscTrash className="mr-2" /> Hapus
           </button>
           <button
             className="bg-blue-500 hover:bg-blue-400 px-3 py-1 inline-flex items-center rounded-md"
             onClick={() => router.push(`/edit/${task.id}`)}
           >
-            <VscEdit className="mr-2" /> Edit
+            <VscEdit className="mr-2" /> Update
           </button>
         </div>
       </div>
