@@ -1,3 +1,5 @@
+// src/context/TasksContext.js
+
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
@@ -15,8 +17,8 @@ export const TasksProvider = ({ children }) => {
   // save in localStorage
   const [tasks, setTasks] = useLocalStorage("tasks", []);
 
-  const createTask = (title, description) =>
-    setTasks([...tasks, { id: uuid(), title, description }]);
+  const createTask = (title, description, deadline, author) =>
+    setTasks([...tasks, { id: uuid(), title, description, deadline, author }]);
 
   const updateTask = (id, updatedTask) =>
     setTasks([

@@ -1,9 +1,13 @@
+// src/app/new/page.js
+
 "use client";
 import { useEffect } from "react";
 import { useTasks } from "../../context/TasksContext";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const TaskFormPage = ({ params }) => {
   const {
@@ -11,13 +15,14 @@ const TaskFormPage = ({ params }) => {
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm();
   const { createTask, updateTask, tasks } = useTasks();
   const router = useRouter();
 
   const onSubmit = handleSubmit((data) => {
     if (!params.id) {
-      createTask(data.title, data.description);
+      createTask(data.title, data.description, data.deadline, data.author);
       toast.success("Task created successfully");
     } else {
       updateTask(params.id, data);
@@ -32,6 +37,8 @@ const TaskFormPage = ({ params }) => {
       if (taskFound) {
         setValue("title", taskFound.title);
         setValue("description", taskFound.description);
+        setValue("deadline", taskFound.deadline ? new Date(taskFound.deadline) : null);
+        setValue("author", taskFound.author);
       }
     }
   }, []);
@@ -68,6 +75,42 @@ const TaskFormPage = ({ params }) => {
             This field is required
           </span>
         )}
+
+        <div className="mb-4">
+          <label htmlFor="deadline" className="block text-gray-400 text-sm font-bold mb-2">
+            Deadline
+          </label>
+          <DatePicker
+            id="deadline"
+            className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
+            selected={watch("deadline")}
+            onChange={(date) => setValue("deadline", date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            timeCaption="Time"
+            dateFormat="yyyy-MM-dd HH:mm"
+            placeholderText="Select deadline"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="author" className="block text-gray-400 text-sm font-bold mb-2">
+            Author
+          </label>
+          <input
+            type="text"
+            id="author"
+            className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
+            placeholder="Enter author name"
+            {...register("author", { required: true })}
+          />
+          {errors.author && (
+            <span className="block text-red-400 mb-2">
+              This field is required
+            </span>
+          )}
+        </div>
 
         <button className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-sm disabled:opacity-30">
           Save
