@@ -45,16 +45,16 @@ const TaskFormPage = ({ params }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <form className="bg-gray-700 p-5 w-[70%]" onSubmit={onSubmit}>
-        <h1 className="text-3xl mb-3">
-          {params.id ? "Edit Task" : "New Task"}
+      <form className="bg-gray-700 p-5 w-[70%] rounded-xl" onSubmit={onSubmit}>
+        <h1 className="text-3xl mb-3 font-semibold text-center">
+          {params.id ? "Edit Tugas" : "Tugas Baru"}
         </h1>
         <label htmlFor="author" className="block text-gray-400 text-sm font-bold mb-2">
             Judul
           </label>
         <input
           type="text"
-          className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
+          className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block rounded-xl"
           placeholder="Write a title"
           autoFocus
           name="title"
@@ -71,7 +71,7 @@ const TaskFormPage = ({ params }) => {
         <textarea
           cols="2"
           placeholder="Write a Description"
-          className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block"
+          className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block rounded-xl"
           name="description"
           {...register("description", { required: true })}
         />
@@ -87,7 +87,7 @@ const TaskFormPage = ({ params }) => {
           </label>
           <DatePicker
             id="deadline"
-            className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
+            className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block rounded-xl"
             selected={watch("deadline")}
             onChange={(date) => setValue("deadline", date)}
             showTimeSelect
@@ -101,12 +101,12 @@ const TaskFormPage = ({ params }) => {
 
         <div className="mb-4">
           <label htmlFor="author" className="block text-gray-400 text-sm font-bold mb-2">
-            Author
+            Penulis
           </label>
           <input
             type="text"
             id="author"
-            className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
+            className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block rounded-xl"
             placeholder="Enter author name"
             {...register("author", { required: true })}
           />
@@ -117,7 +117,7 @@ const TaskFormPage = ({ params }) => {
           )}
         </div>
 
-        <button className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-sm disabled:opacity-30">
+        <button className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-md disabled:opacity-30">
           Simpan
         </button>
       </form>

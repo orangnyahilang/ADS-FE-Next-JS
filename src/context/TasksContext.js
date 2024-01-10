@@ -30,6 +30,13 @@ export const TasksProvider = ({ children }) => {
   const deleteTask = (id) =>
     setTasks([...tasks.filter((task) => task.id !== id)]);
 
+
+  const searchTasks = (searchTerm) => {
+    // Gunakan toLowerCase() agar pencarian tidak case-sensitive
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    setTasks([...tasks.filter((task) => task.title.toLowerCase().includes(lowerCaseSearchTerm))]);
+  };
+    
   return (
     <TaskContext.Provider
       value={{
@@ -37,6 +44,7 @@ export const TasksProvider = ({ children }) => {
         createTask,
         updateTask,
         deleteTask,
+        searchTasks,
       }}
     >
       {children}

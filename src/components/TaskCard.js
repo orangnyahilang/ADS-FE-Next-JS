@@ -33,19 +33,21 @@ export const TaskCard = ({ task }) => {
           <span className="text-gray-400 text-xs block mb-1"><FontAwesomeIcon icon={faClock} /> Deadline: {formatDeadline(task.deadline)}</span>
         </div>
         <div className="flex items-center">
-          <button
-            className="bg-red-700 hover:bg-red-600 px-3 py-1 inline-flex items-center mr-2 rounded-md"
-            onClick={(e) => {
-              e.stopPropagation();
-              const accept = confirm(
-                "Are you sure you want to delete this task?"
-              );
-              if (accept) deleteTask(task.id);
+        <button
+          className="bg-red-700 hover:bg-red-600 px-3 py-1 inline-flex items-center mr-2 rounded-md"
+          onClick={(e) => {
+            e.stopPropagation();
+            const accept = confirm(
+              "Are you sure you want to delete this task?"
+            );
+            if (accept) {
+              deleteTask(task.id);
               toast.success("Task deleted successfully");
-            }}
-          >
-            <VscTrash className="mr-2" /> Hapus
-          </button>
+            }
+          }}
+        >
+          <VscTrash className="mr-2" /> Hapus
+        </button>
           <button
             className="bg-blue-500 hover:bg-blue-400 px-3 py-1 inline-flex items-center rounded-md"
             onClick={() => router.push(`/edit/${task.id}`)}
