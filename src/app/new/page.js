@@ -46,7 +46,7 @@ const TaskFormPage = ({ params }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <form className="bg-gray-700 p-5 w-[70%] rounded-xl" onSubmit={onSubmit}>
+      <form className="bg-gray-700 p-5 w-[70%] rounded-xl my-5" onSubmit={onSubmit}>
         <h1 className="text-3xl mb-3 font-semibold text-center">
           {params.id ? "Edit Tugas" : "Tugas Baru"}
         </h1>

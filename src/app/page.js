@@ -21,10 +21,10 @@ function Home() {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center items-center">
       {tasks.length === 0 ? (
-        <div className="block">
-          <h2 className="text-2xl">Belum ada tugas</h2>
+        <div className="flex flex-col items-center mt-5">
+          <h2 className="text-2xl">Belum ada tugas, silahkan menambahkan tugas</h2>
           <VscTasklist size="8rem" />
         </div>
       ) : (
