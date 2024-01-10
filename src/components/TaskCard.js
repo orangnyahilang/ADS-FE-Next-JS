@@ -28,7 +28,7 @@ export const TaskCard = ({ task }) => {
             <h1 className="font-bold mb-1">{task.title}</h1>
             {/* Tombol Delete dipindahkan ke samping */}
           </div>
-          <p className="text-gray-300 mb-2 overflow-hidden overflow-ellipsis max-h-[3em]">{task.description}</p>
+          <p className="text-gray-300 mb-2 max-sm:w-[90%] overflow-hidden overflow-ellipsis max-h-[3em] max-sm:max-h-[3em]">{task.description}</p>
           <span className="text-gray-400 text-xs block mb-1"><FontAwesomeIcon icon={faUserPen} /> Penulis: {task.author}</span>
           <span className="text-gray-400 text-xs block mb-1"><FontAwesomeIcon icon={faClock} /> Deadline: {formatDeadline(task.deadline)}</span>
           <span className="text-gray-400 text-xs block mb-1"><FontAwesomeIcon icon={faBarsProgress} /> Mata Kuliah: {task.matkul}</span>
@@ -36,11 +36,12 @@ export const TaskCard = ({ task }) => {
           
         <div className="flex items-center">
 
-        <div className="mr-10 w-[0.2rem] h-[8rem] bg-gray-900 rounded-xl overflow-hidden">
+        <div className="max-sm:relative max-sm:left-[25%] mr-10 w-[0.2rem] h-[8rem] bg-gray-900 rounded-xl overflow-hidden max-sm:mr-1 max-sm:h-[4rem]">
         </div>
-
+        <div className="m">
+        </div>
         
-        <div className="flex flex-col">
+        <div className="flex flex-col max-sm:scale-[70%] max-sm:relative max-sm:left-6">
         <button
           className="bg-red-700 hover:bg-red-600 px-3 py-1 inline-flex items-center mr-2 mb-3 rounded-md"
           onClick={(e) => {
