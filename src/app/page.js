@@ -102,7 +102,7 @@ function Home() {
     <div className="flex justify-center items-center">
       <style>{customCSS}</style>
       {tasks.length === 0 ? (
-        <div className="flex flex-col items-center mt-5">
+        <div className="flex flex-col items-center text-center mt-5">
           <h2 className="text-2xl">Belum ada tugas, silahkan menambahkan tugas</h2>
           <VscTasklist size="8rem" />
         </div>

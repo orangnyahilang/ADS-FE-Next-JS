@@ -25,7 +25,7 @@ export const TaskCard = ({ task }) => {
       <div className="flex justify-between items-center">
         <div className="w-[50vw]">
           <div className="flex justify-between">
-            <h1 className="font-bold mb-1">{task.title}</h1>
+            <h1 className="font-semibold mb-1 text-3xl max-sm:text-2xl">{task.title}</h1>
             {/* Tombol Delete dipindahkan ke samping */}
           </div>
           <p className="text-gray-300 mb-2 max-sm:w-[90%] overflow-hidden overflow-ellipsis max-h-[3em] max-sm:max-h-[3em]">{task.description}</p>

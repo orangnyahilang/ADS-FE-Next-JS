@@ -39,7 +39,7 @@ const Sort = () => {
     <div className="flex justify-end">
       <button
         type="button"
-        className="group bg-blue-500 hover:bg-blue-400 px-3 py-1 my-[0.4rem] text-gray font-medium rounded-lg inline-flex items-center transition-all duration-300 ease-in-out hover:ease-in-out"
+        className="group bg-yellow-500 hover:bg-yellow-400 px-3 py-1 my-[0.4rem] text-gray font-medium rounded-lg inline-flex items-center transition-all duration-300 ease-in-out hover:ease-in-out"
         onClick={() => setIsOpen(!isOpen)}
       >
         Sort {getSortIcon(sortOption)}
