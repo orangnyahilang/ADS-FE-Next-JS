@@ -22,7 +22,7 @@ const TaskFormPage = ({ params }) => {
 
   const onSubmit = handleSubmit((data) => {
     if (!params.id) {
-      createTask(data.title, data.description, data.deadline, data.author);
+      createTask(data.title, data.description, data.deadline, data.author, data.matkul);
       toast.success("Task created successfully");
     } else {
       updateTask(params.id, data);
@@ -39,6 +39,7 @@ const TaskFormPage = ({ params }) => {
         setValue("description", taskFound.description);
         setValue("deadline", taskFound.deadline ? new Date(taskFound.deadline) : null);
         setValue("author", taskFound.author);
+        setValue("matkul", taskFound.matkul);
       }
     }
   }, []);
@@ -115,6 +116,25 @@ const TaskFormPage = ({ params }) => {
               Bagian ini harus diisi
             </span>
           )}
+        </div>
+
+        <div className="mb-4">
+        <label htmlFor="author" className="block text-gray-400 text-sm font-bold mb-2">
+            Matkul
+          </label>
+        <input
+          type="text"
+          className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block rounded-xl"
+          placeholder="Write a matkul"
+          autoFocus
+          name="matkul"
+          {...register("matkul", { required: true })}
+        />
+        {errors.matkul && (
+          <span className="block text-red-400 mb-2">
+            Bagian ini harus diisi
+          </span>
+        )}
         </div>
 
         <button className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-md disabled:opacity-30">

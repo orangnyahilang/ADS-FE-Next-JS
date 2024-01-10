@@ -14,29 +14,35 @@ export const useTasks = () => {
 };
 
 export const TasksProvider = ({ children }) => {
-  // save in localStorage
   const [tasks, setTasks] = useLocalStorage("tasks", []);
+  const [sortOrder, setSortOrder] = useState("asc");
 
-  const createTask = (title, description, deadline, author) =>
-    setTasks([...tasks, { id: uuid(), title, description, deadline, author }]);
-
-  const updateTask = (id, updatedTask) =>
-    setTasks([
-      ...tasks.map((task) =>
-        task.id === id ? { ...task, ...updatedTask } : task
-      ),
-    ]);
-
-  const deleteTask = (id) =>
-    setTasks([...tasks.filter((task) => task.id !== id)]);
-
-
-  const searchTasks = (searchTerm) => {
-    // Gunakan toLowerCase() agar pencarian tidak case-sensitive
-    const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    setTasks([...tasks.filter((task) => task.title.toLowerCase().includes(lowerCaseSearchTerm))]);
+  const createTask = (title, description, deadline, author, matkul) => {
+    setTasks([...tasks, { id: uuid(), title, description, deadline, author, matkul }]);
   };
-    
+
+  const updateTask = (id, updatedTask) => {
+    setTasks([...tasks.map((task) => (task.id === id ? { ...task, ...updatedTask } : task))]);
+  };
+
+  const deleteTask = (id) => {
+    setTasks([...tasks.filter((task) => task.id !== id)]);
+  };
+
+  const sortTasks = (criteria) => {
+    const sortedTasks = [...tasks];
+
+    sortedTasks.sort((taskA, taskB) => {
+      if (sortOrder === "asc") {
+        return taskA[criteria].localeCompare(taskB[criteria]);
+      } else {
+        return taskB[criteria].localeCompare(taskA[criteria]);
+      }
+    });
+
+    setTasks(sortedTasks);
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -44,7 +50,8 @@ export const TasksProvider = ({ children }) => {
         createTask,
         updateTask,
         deleteTask,
-        searchTasks,
+        sortTasks,
+        setSortOrder,
       }}
     >
       {children}
