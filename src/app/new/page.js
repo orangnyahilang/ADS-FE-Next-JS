@@ -46,7 +46,7 @@ const TaskFormPage = ({ params }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <form className="bg-gray-700 p-5 w-[70%] rounded-xl my-5" onSubmit={onSubmit}>
+      <form className="bg-gray-700 p-5 w-[70%] max-sm:w-[90%] rounded-xl my-5" onSubmit={onSubmit}>
         <h1 className="text-3xl mb-3 font-semibold text-center">
           {params.id ? "Edit Tugas" : "Tugas Baru"}
         </h1>
@@ -120,7 +120,7 @@ const TaskFormPage = ({ params }) => {
 
         <div className="mb-4">
         <label htmlFor="author" className="block text-gray-400 text-sm font-bold mb-2">
-            Matkul
+            Mata Kuliah
           </label>
         <input
           type="text"
@@ -137,7 +137,7 @@ const TaskFormPage = ({ params }) => {
         )}
         </div>
 
-        <button className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-md disabled:opacity-30">
+        <button className="bg-green-500 hover:bg-green-400 px-4 py-2 mt-4 rounded-md disabled:opacity-30">
           Simpan
         </button>
       </form>
